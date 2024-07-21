@@ -1,11 +1,11 @@
 import Principal "mo:base/Principal";
-import Http "mo:certified-cache/Http";
 import Text "mo:base/Text";
 import Error "mo:base/Error";
 import Debug "mo:base/Debug";
 import Nat "mo:base/Nat";
 import Frontend "frontend/__html__";
 import Scan "scan";
+import Http "mo:certified-cache/Http";
 
 shared ({ caller = creator }) actor class Boot() = this {
 

@@ -1,0 +1,3 @@
+[dependencies]
+base = "0.11.1"
+certified-cache = "0.2.1"
