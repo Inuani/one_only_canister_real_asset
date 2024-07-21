@@ -1,0 +1,13 @@
+{
+    "canisters": {
+        "spaceboots": {
+            "main": "src/spaceboots/main.mo",
+            "type": "motoko"
+        }
+    },
+    "defaults": {
+        "build": {
+            "packtool": ""
+        }
+    }
+}
