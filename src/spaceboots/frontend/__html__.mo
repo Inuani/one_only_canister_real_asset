@@ -2,7 +2,6 @@ import Array "mo:base/Array";
 import Text "mo:base/Text";
 import Blob "mo:base/Blob";
 import index "index";
-import valid "valid";
 import oceanspaceboots "oceanspaceboots";
 import invalid "invalid";
 import petitprince "petitprince";
@@ -29,14 +28,6 @@ module {
         {
             return ({
                 body = index.get_html();
-                headers = [("Content-Type", "text/html")];
-                status_code = 200;
-            });
-        };
-        if (url == "/valid.html")
-        {
-            return ({
-                body = valid.get_html();
                 headers = [("Content-Type", "text/html")];
                 status_code = 200;
             });
