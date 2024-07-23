@@ -3,8 +3,8 @@ import Text "mo:base/Text";
 import Blob "mo:base/Blob";
 import index "index";
 import valid "valid";
+import oceanspaceboots "oceanspaceboots";
 import invalid "invalid";
-import OceanSpaceBoots "OceanSpaceBoots";
 import petitprince "petitprince";
 module {
         public type StatusCode = Nat16;
@@ -41,19 +41,19 @@ module {
                 status_code = 200;
             });
         };
+        if (url == "/oceanspaceboots.jpg")
+        {
+            return ({
+                body = oceanspaceboots.get_html();
+                headers = [("Content-Type", "image/jpeg")];
+                status_code = 200;
+            });
+        };
         if (url == "/invalid.html")
         {
             return ({
                 body = invalid.get_html();
                 headers = [("Content-Type", "text/html")];
-                status_code = 200;
-            });
-        };
-        if (url == "/OceanSpaceBoots.jpg")
-        {
-            return ({
-                body = OceanSpaceBoots.get_html();
-                headers = [("Content-Type", "image/jpeg")];
                 status_code = 200;
             });
         };

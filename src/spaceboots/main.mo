@@ -29,24 +29,35 @@ shared ({ caller = creator }) actor class Boot() = this {
         };
         scan_count := counter;
         let new_request = {
-            url = "/valid.html";
+            url = "/";
             method = request.method;
             body = request.body;
             headers = request.headers;
         };
 
-        return (Frontend.http_request(new_request));
+        return (Frontend.get_html(new_request));
     };
 
     
     public query func http_request(request : Http.HttpRequest) : async Http.HttpResponse {
+
+        if (request.url == "/oceanspaceboots.jpg") {
+        let res = Frontend.get_html(request);
+        return {
+            body = res.body;
+            headers = res.headers;
+            status_code = res.status_code;
+            streaming_strategy = null;
+            upgrade = ?false;
+        };
+    };
 
         let counter = Scan.scan(request.url, scan_count);
 
         Debug.print("Valid: " # Nat.toText(counter)# " Scan Count: " # Nat.toText(scan_count));
         let new_request = {
             url = if (counter > 0) {
-                "/valid.html"
+                "/"
             } else {
                 "/invalid.html"
             };
@@ -55,7 +66,7 @@ shared ({ caller = creator }) actor class Boot() = this {
             headers = request.headers;
         };
 
-        let res = Frontend.http_request(new_request);
+        let res = Frontend.get_html(new_request);
 
         return {
             body = res.body;
