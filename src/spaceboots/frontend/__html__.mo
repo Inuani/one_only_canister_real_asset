@@ -2,9 +2,9 @@ import Array "mo:base/Array";
 import Text "mo:base/Text";
 import Blob "mo:base/Blob";
 import index "index";
+import petitprince "petitprince";
 import oceanspaceboots "oceanspaceboots";
 import invalid "invalid";
-import petitprince "petitprince";
 module {
         public type StatusCode = Nat16;
         public type HeaderField = (Text, Text);
@@ -32,6 +32,14 @@ module {
                 status_code = 200;
             });
         };
+        if (url == "/petitprince.png")
+        {
+            return ({
+                body = petitprince.get_html();
+                headers = [("Content-Type", "image/png")];
+                status_code = 200;
+            });
+        };
         if (url == "/oceanspaceboots.jpg")
         {
             return ({
@@ -45,14 +53,6 @@ module {
             return ({
                 body = invalid.get_html();
                 headers = [("Content-Type", "text/html")];
-                status_code = 200;
-            });
-        };
-        if (url == "/petitprince.png")
-        {
-            return ({
-                body = petitprince.get_html();
-                headers = [("Content-Type", "image/png")];
                 status_code = 200;
             });
         };
